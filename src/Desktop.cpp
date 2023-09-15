@@ -1,11 +1,11 @@
-#include <Geode/DefaultInclude.hpp>
+#include <Sapphire/DefaultInclude.hpp>
 
-#ifdef GEODE_IS_DESKTOP
+#ifdef SAPPHIRE_IS_DESKTOP
 #include "Platform.hpp"
 #include "../include/API.hpp"
-#include <Geode/modify/CCMouseDispatcher.hpp>
+#include <Sapphire/modify/CCMouseDispatcher.hpp>
 
-using namespace geode::prelude;
+using namespace sapphire::prelude;
 using namespace mouse;
 
 struct $modify(CCMouseDispatcher) {

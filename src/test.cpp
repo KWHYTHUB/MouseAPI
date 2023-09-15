@@ -1,8 +1,8 @@
-#include <Geode/modify/MenuLayer.hpp>
+#include <Sapphire/modify/MenuLayer.hpp>
 #include "../include/API.hpp"
 #include "../include/ContextMenu.hpp"
 
-using namespace geode::prelude;
+using namespace sapphire::prelude;
 using namespace mouse;
 
 // #define MOUSEAPI_TEST
@@ -99,10 +99,10 @@ struct $modify(MenuLayer) {
             return false;
         
         this->getChildByID("main-title")
-            ->setAttribute("geode.mouse-api/tooltip", "Omg tooltips");
+            ->setAttribute("sapphire.mouse-api/tooltip", "Omg tooltips");
         
         this->getChildByID("profile-menu")
-            ->setAttribute("geode.mouse-api/context-menu",
+            ->setAttribute("sapphire.mouse-api/context-menu",
                 buildContextMenu()
                     .addItem("Hiii", "my-event-id"_spr)
                     .addItem("Ba", "my-event-id"_spr, .5f)
@@ -114,7 +114,7 @@ struct $modify(MenuLayer) {
             );
 
         this->getChildByID("main-menu")
-            ->setAttribute("geode.mouse-api/context-menu",
+            ->setAttribute("sapphire.mouse-api/context-menu",
                 json::Array {
                     json::Object {
                         { "text", "Click to Work?" },

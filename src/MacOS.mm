@@ -1,16 +1,16 @@
-#include <Geode/Loader.hpp>
+#include <Sapphire/Loader.hpp>
 #include "../include/API.hpp"
 
-#ifdef GEODE_IS_MACOS
+#ifdef SAPPHIRE_IS_MACOS
 
-#include <Geode/cocos/platform/mac/CCEventDispatcher.h>
+#include <Sapphire/cocos/platform/mac/CCEventDispatcher.h>
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
-#import <Geode/cocos/platform/mac/EAGLView.h>
+#import <Sapphire/cocos/platform/mac/EAGLView.h>
 #import <objc/runtime.h>
 #include "Platform.hpp"
 
-using namespace geode::prelude;
+using namespace sapphire::prelude;
 using namespace mouse;
 
 using EventType = void(*)(id, SEL, NSEvent*);
@@ -37,7 +37,7 @@ static MacMouseEvent* s_sharedEvent = nil;
 @implementation MacMouseEvent
 
 // i just want to get this working
-#define GEODE_API_OBJC_SWIZZLE_METHODS(mouseType, prefix, originalPrefix)               \
+#define SAPPHIRE_API_OBJC_SWIZZLE_METHODS(mouseType, prefix, originalPrefix)               \
 static EventType originalPrefix##Dragged;                                               \
 - (void)prefix##DraggedHook:(NSEvent*)event {                                           \
 /*	originalPrefix##Dragged(self, @selector(prefix##Dragged:), event);                */\
@@ -59,11 +59,11 @@ static EventType s_originalMouseMoved;
 	// s_originalMouseMoved(self, @selector(mouseMoved:), event);
 	[[MacMouseEvent sharedEvent] moved:event];
 }
-GEODE_API_OBJC_SWIZZLE_METHODS(Left, mouse, s_originalMouse)
-GEODE_API_OBJC_SWIZZLE_METHODS(Right, rightMouse, s_originalRightMouse)
-GEODE_API_OBJC_SWIZZLE_METHODS(Middle, otherMouse, s_originalOtherMouse)
+SAPPHIRE_API_OBJC_SWIZZLE_METHODS(Left, mouse, s_originalMouse)
+SAPPHIRE_API_OBJC_SWIZZLE_METHODS(Right, rightMouse, s_originalRightMouse)
+SAPPHIRE_API_OBJC_SWIZZLE_METHODS(Middle, otherMouse, s_originalOtherMouse)
 
-#define GEODE_API_OBJC_SWIZZLE(method, swizzle, original)                               \
+#define SAPPHIRE_API_OBJC_SWIZZLE(method, swizzle, original)                               \
 Method method##Method = class_getInstanceMethod(class_, @selector(method:));            \
 Method swizzle##Method = class_getInstanceMethod([self class], @selector(swizzle:));    \
 original = (decltype(original))method_getImplementation(method##Method);                \
@@ -75,19 +75,19 @@ method_exchangeImplementations(method##Method, swizzle##Method);
 	dispatch_once(&onceToken, ^{
 		Class class_ = NSClassFromString(@"EAGLView");
 
-		GEODE_API_OBJC_SWIZZLE(mouseMoved, mouseMovedHook, s_originalMouseMoved)
+		SAPPHIRE_API_OBJC_SWIZZLE(mouseMoved, mouseMovedHook, s_originalMouseMoved)
 
-		GEODE_API_OBJC_SWIZZLE(mouseDragged, mouseDraggedHook, s_originalMouseDragged)
-		GEODE_API_OBJC_SWIZZLE(mouseDown, mouseDownHook, s_originalMouseDown)
-		GEODE_API_OBJC_SWIZZLE(mouseUp, mouseUpHook, s_originalMouseUp)
+		SAPPHIRE_API_OBJC_SWIZZLE(mouseDragged, mouseDraggedHook, s_originalMouseDragged)
+		SAPPHIRE_API_OBJC_SWIZZLE(mouseDown, mouseDownHook, s_originalMouseDown)
+		SAPPHIRE_API_OBJC_SWIZZLE(mouseUp, mouseUpHook, s_originalMouseUp)
 
-		GEODE_API_OBJC_SWIZZLE(rightMouseDragged, rightMouseDraggedHook, s_originalRightMouseDragged)
-		GEODE_API_OBJC_SWIZZLE(rightMouseDown, rightMouseDownHook, s_originalRightMouseDown)
-		GEODE_API_OBJC_SWIZZLE(rightMouseUp, rightMouseUpHook, s_originalRightMouseUp)
+		SAPPHIRE_API_OBJC_SWIZZLE(rightMouseDragged, rightMouseDraggedHook, s_originalRightMouseDragged)
+		SAPPHIRE_API_OBJC_SWIZZLE(rightMouseDown, rightMouseDownHook, s_originalRightMouseDown)
+		SAPPHIRE_API_OBJC_SWIZZLE(rightMouseUp, rightMouseUpHook, s_originalRightMouseUp)
 
-		GEODE_API_OBJC_SWIZZLE(otherMouseDragged, otherMouseDraggedHook, s_originalOtherMouseDragged)
-		GEODE_API_OBJC_SWIZZLE(otherMouseDown, otherMouseDownHook, s_originalOtherMouseDown)
-		GEODE_API_OBJC_SWIZZLE(otherMouseUp, otherMouseUpHook, s_originalOtherMouseUp)
+		SAPPHIRE_API_OBJC_SWIZZLE(otherMouseDragged, otherMouseDraggedHook, s_originalOtherMouseDragged)
+		SAPPHIRE_API_OBJC_SWIZZLE(otherMouseDown, otherMouseDownHook, s_originalOtherMouseDown)
+		SAPPHIRE_API_OBJC_SWIZZLE(otherMouseUp, otherMouseUpHook, s_originalOtherMouseUp)
 	});
 }
 

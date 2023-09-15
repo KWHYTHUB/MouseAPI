@@ -1,11 +1,11 @@
-#include <Geode/DefaultInclude.hpp>
+#include <Sapphire/DefaultInclude.hpp>
 
-#ifdef GEODE_IS_WINDOWS
-#include <Geode/cocos/robtop/glfw/glfw3.h>
+#ifdef SAPPHIRE_IS_WINDOWS
+#include <Sapphire/cocos/robtop/glfw/glfw3.h>
 #include "../include/API.hpp"
 #include "Platform.hpp"
 
-using namespace geode::prelude;
+using namespace sapphire::prelude;
 using namespace mouse;
 
 struct _GLFWwindow
@@ -68,7 +68,7 @@ static CCPoint convertMouseCoords(double x, double y) {
     return ccp(mouse.x, 1.f - mouse.y) * winSize;
 }
 
-#include <Geode/modify/CCEGLView.hpp>
+#include <Sapphire/modify/CCEGLView.hpp>
 
 static GLFWcursorposfun originalCursorPosFun = nullptr;
 

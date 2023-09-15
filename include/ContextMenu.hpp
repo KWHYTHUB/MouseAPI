@@ -1,9 +1,9 @@
 #pragma once
 
 #include "API.hpp"
-#include <Geode/DefaultInclude.hpp>
-#include <Geode/loader/Dispatch.hpp>
-#include <Geode/utils/cocos.hpp>
+#include <Sapphire/DefaultInclude.hpp>
+#include <Sapphire/loader/Dispatch.hpp>
+#include <Sapphire/utils/cocos.hpp>
 
 namespace mouse {
     struct ContextMenuStyle {
@@ -14,7 +14,7 @@ namespace mouse {
         float maxHeight = 140.f;
         float itemGap = 0.f;
         std::string fontName = "chatFont.fnt";
-        std::string arrowSprite = "geode.mouse-api/arrow.png";
+        std::string arrowSprite = "sapphire.mouse-api/arrow.png";
         bool flipArrow = false;
         float arrowSize = 5.5f;
         std::string bgSprite = "square02b_small.png";
@@ -81,13 +81,13 @@ namespace mouse {
     class ContextMenu;
     class ActionMenuItem;
 
-    using ContextMenuEvent = geode::DispatchEvent<cocos2d::CCNode*>;
-    using ContextMenuFilter = geode::DispatchFilter<cocos2d::CCNode*>;
+    using ContextMenuEvent = sapphire::DispatchEvent<cocos2d::CCNode*>;
+    using ContextMenuFilter = sapphire::DispatchFilter<cocos2d::CCNode*>;
 
-    using ContextMenuDragEvent = geode::DispatchEvent<cocos2d::CCNode*, float>;
-    using ContextMenuDragFilter = geode::DispatchFilter<cocos2d::CCNode*, float>;
-    using ContextMenuDragInitEvent = geode::DispatchEvent<cocos2d::CCNode*, float*>;
-    using ContextMenuDragInitFilter = geode::DispatchFilter<cocos2d::CCNode*, float*>;
+    using ContextMenuDragEvent = sapphire::DispatchEvent<cocos2d::CCNode*, float>;
+    using ContextMenuDragFilter = sapphire::DispatchFilter<cocos2d::CCNode*, float>;
+    using ContextMenuDragInitEvent = sapphire::DispatchEvent<cocos2d::CCNode*, float*>;
+    using ContextMenuDragInitFilter = sapphire::DispatchFilter<cocos2d::CCNode*, float*>;
 
     // Defined inline so this can be used without linking
     struct ContextMenuBuilder {
@@ -191,7 +191,7 @@ namespace mouse {
         virtual void drag(float delta);
     };
 
-    using ItemRef = geode::Ref<ContextMenuItem>;
+    using ItemRef = sapphire::Ref<ContextMenuItem>;
 
     class MOUSEAPI_DLL ActionMenuItem : public ContextMenuItem {
     protected:
@@ -252,7 +252,7 @@ namespace mouse {
 
     class MOUSEAPI_DLL ContextMenu : public cocos2d::CCNode {
     protected:
-        geode::Ref<cocos2d::CCNode> m_target;
+        sapphire::Ref<cocos2d::CCNode> m_target;
         std::vector<ItemRef> m_items;
         cocos2d::CCNode* m_container;
         cocos2d::extension::CCScale9Sprite* m_bg;

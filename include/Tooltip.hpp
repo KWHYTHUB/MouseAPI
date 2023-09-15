@@ -1,7 +1,7 @@
 #pragma once
 
 #include "API.hpp"
-#include <Geode/DefaultInclude.hpp>
+#include <Sapphire/DefaultInclude.hpp>
 
 namespace mouse {
     class MOUSEAPI_DLL Tooltip : public cocos2d::CCNode {

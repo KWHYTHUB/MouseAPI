@@ -1,9 +1,9 @@
 {
-	"geode": "1.0.0",
+	"sapphire": "1.0.0",
 	"version": "v1.0.0",
-	"id": "geode.mouse-api",
+	"id": "sapphire.mouse-api",
 	"name": "Mouse API",
-	"developer": "Geode Team",
+	"developer": "Sapphire Team",
 	"description": "Support for more mouse buttons & hovering",
 	"resources": {
 		"spritesheets": {

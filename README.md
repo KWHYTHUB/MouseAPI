@@ -4,13 +4,13 @@ API mod for handling mouse events, such as mouse move, right click, and more. Sh
 
 ## Usage
 
-Add `geode.mouse-api` to your dependencies in `mod.json`:
+Add `sapphire.mouse-api` to your dependencies in `mod.json`:
 
 ```json
 {
     "dependencies": [
         {
-            "id": "geode.mouse-api",
+            "id": "sapphire.mouse-api",
             "version": ">=1.0.0",
             "required": true
         }
@@ -21,7 +21,7 @@ Add `geode.mouse-api` to your dependencies in `mod.json`:
 Listening for events on a node is as simple as follows:
 
 ```cpp
-#include <geode.mouse-api/include/API.hpp>
+#include <sapphire.mouse-api/include/API.hpp>
 
 using namespace mouse;
 
@@ -48,7 +48,7 @@ node->template addEventListener<MouseEventFilter>([=](MouseEvent* event) {
 This API also provides the `Tooltip` and `ContextMenu` classes, which are exposed through attributes, making them easily usable for any mod without needing to link to this dependency:
 
 ```cpp
-node->setAttribute("geode.mouse-api/tooltip", "This text is shown when the node is hovered!");
+node->setAttribute("sapphire.mouse-api/tooltip", "This text is shown when the node is hovered!");
 
 $execute {
     // The node parameter on the callback is the node whose context menu was clicked
@@ -59,7 +59,7 @@ $execute {
     }, ContextMenuFilter("my-event-id"_spr));
 }
 
-node->setAttribute("geode.mouse-api/context-menu",
+node->setAttribute("sapphire.mouse-api/context-menu",
     json::Array {
         json::Object {
             { "text", "Item w/ icon" },

@@ -1,13 +1,13 @@
-#include <Geode/modify/CCLayer.hpp>
-#include <Geode/modify/CCMenu.hpp>
-#include <Geode/modify/CCTouchDispatcher.hpp>
-#include <Geode/modify/AchievementNotifier.hpp>
-#include <Geode/modify/CCTextInputNode.hpp>
-#include <Geode/utils/cocos.hpp>
+#include <Sapphire/modify/CCLayer.hpp>
+#include <Sapphire/modify/CCMenu.hpp>
+#include <Sapphire/modify/CCTouchDispatcher.hpp>
+#include <Sapphire/modify/AchievementNotifier.hpp>
+#include <Sapphire/modify/CCTextInputNode.hpp>
+#include <Sapphire/utils/cocos.hpp>
 #include "../include/API.hpp"
 #include "Pool.hpp"
 
-using namespace geode::prelude;
+using namespace sapphire::prelude;
 using namespace mouse;
 
 struct $modify(CCTouchDispatcher) {

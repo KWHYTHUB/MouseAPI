@@ -1,11 +1,11 @@
 #pragma once
 
-#include <Geode/Loader.hpp>
+#include <Sapphire/Loader.hpp>
 #include <cocos2d.h>
-#include <Geode/Utils.hpp>
+#include <Sapphire/Utils.hpp>
 
-#ifdef GEODE_IS_WINDOWS
-    #ifdef GEODE_MOUSEAPI_EXPORTING
+#ifdef SAPPHIRE_IS_WINDOWS
+    #ifdef SAPPHIRE_MOUSEAPI_EXPORTING
         #define MOUSEAPI_DLL __declspec(dllexport)
     #else
         #define MOUSEAPI_DLL __declspec(dllimport)
@@ -60,7 +60,7 @@ namespace mouse {
         void setHovered(bool hovered);
     };
 
-    class MOUSEAPI_DLL MouseEvent : public geode::Event {
+    class MOUSEAPI_DLL MouseEvent : public sapphire::Event {
     protected:
         bool m_swallow = false;
         cocos2d::CCNode* m_target;
@@ -75,7 +75,7 @@ namespace mouse {
         void updateTouch(cocos2d::CCTouch* touch) const;
         virtual void dispatchDefault(cocos2d::CCNode* target, cocos2d::CCTouch* touch) const = 0;
 
-        geode::EventListenerPool* getPool() const override;
+        sapphire::EventListenerPool* getPool() const override;
 
         friend class MouseEventFilter;
         friend struct ::CCTouchDispatcherModify;
@@ -167,18 +167,18 @@ namespace mouse {
         bool isLeave() const;
     };
 
-    class MOUSEAPI_DLL MouseEventFilter : public geode::EventFilter<MouseEvent> {
+    class MOUSEAPI_DLL MouseEventFilter : public sapphire::EventFilter<MouseEvent> {
     protected:
         cocos2d::CCNode* m_target;
-        geode::Ref<cocos2d::CCTouch> m_eaten = nullptr;
+        sapphire::Ref<cocos2d::CCTouch> m_eaten = nullptr;
         bool m_ignorePosition = false;
         size_t m_filterIndex = 0;
 
     public:
         using Callback = MouseResult(MouseEvent*);
 
-        geode::ListenerResult handle(geode::utils::MiniFunction<Callback> fn, MouseEvent* event);
-        geode::EventListenerPool* getPool() const;
+        sapphire::ListenerResult handle(sapphire::utils::MiniFunction<Callback> fn, MouseEvent* event);
+        sapphire::EventListenerPool* getPool() const;
         /**
          * @warning The target is not retained, make sure it's valid for the 
          * entire lifetime of the filter!
@@ -204,10 +204,10 @@ namespace mouse {
     public:
         static Mouse* get();
 
-        geode::EventListener<MouseEventFilter>* getCapturing() const;
+        sapphire::EventListener<MouseEventFilter>* getCapturing() const;
         cocos2d::CCNode* getCapturingNode() const;
-        void capture(geode::EventListener<MouseEventFilter>* listener);
-        void release(geode::EventListener<MouseEventFilter>* listener);
+        void capture(sapphire::EventListener<MouseEventFilter>* listener);
+        void release(sapphire::EventListener<MouseEventFilter>* listener);
 
         bool isHeld(MouseButton button) const;
 

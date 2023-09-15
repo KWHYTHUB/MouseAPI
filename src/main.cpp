@@ -1,9 +1,9 @@
 #include "../include/API.hpp"
-#include <Geode/utils/cocos.hpp>
-#include <Geode/utils/ranges.hpp>
-#include <Geode/modify/CCNode.hpp>
-#include <Geode/modify/CCTouchDispatcher.hpp>
-#include <Geode/cocos/robtop/glfw/glfw3.h>
+#include <Sapphire/utils/cocos.hpp>
+#include <Sapphire/utils/ranges.hpp>
+#include <Sapphire/modify/CCNode.hpp>
+#include <Sapphire/modify/CCTouchDispatcher.hpp>
+#include <Sapphire/cocos/robtop/glfw/glfw3.h>
 #include <json/stl_serialize.hpp>
 #include "Platform.hpp"
 #include "Pool.hpp"

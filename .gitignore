@@ -44,7 +44,7 @@
 *.sublime-project
 
 # I need to find a way to automatically remove this
-Source/Geode/pkg/uber-apk-signer.jar
+Source/Sapphire/pkg/uber-apk-signer.jar
 
 # Ignore build folders
 **/build

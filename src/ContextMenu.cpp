@@ -1,6 +1,6 @@
 #include "../include/ContextMenu.hpp"
 
-using namespace geode::prelude;
+using namespace sapphire::prelude;
 using namespace mouse;
 
 bool ContextMenuItem::init(ContextMenu* menu) {

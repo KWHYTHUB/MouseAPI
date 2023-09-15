@@ -1,6 +1,6 @@
 #include "../include/Tooltip.hpp"
 
-using namespace geode::prelude;
+using namespace sapphire::prelude;
 using namespace mouse;
 
 bool Tooltip::init(std::string const& text) {
